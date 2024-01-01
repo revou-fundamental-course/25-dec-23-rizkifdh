@@ -3,9 +3,138 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Init Commit</title>
+  <title>Kaltik - Kalkulator Matematik Segitiga</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-  
+  <main>
+    <header>
+      <div style="padding-bottom: 30px;">
+        Kaltik - Kalkulator Matematik (Segitiga)
+      </div>
+    </header>
+    <div id="title">
+      <div>Kaltik (Segitiga) is a webs that can count Triangle <span>Area</span> and <span>Perimeter</span> for you</div>
+    </div>
+
+    <div style="text-align: center; padding-bottom: 15px;">Choose One :</div>
+    <div id="tab">
+      <div class="tab" onclick="openTab(event, 'area')">Area</div>
+      <div class="tab" onclick="openTab(event, 'perimeter')">Perimeter</div>
+    </div>
+
+    <!-- Area Section -->
+    <section id="area" class="content">
+      <h2 style="margin-bottom: 50px;">
+        Area of The Triangle
+      </h2>
+      <div>
+        <input type="number" id="baseArea" placeholder="enter base here" min="0" max="999" pattern="[0-9]{1,3}">
+        <p id="warning" style="color: red; display: none;"></p>
+      </div>
+      <div>
+        <input type="number" id="heightArea" placeholder="enter height here" min="0" max="999" pattern="[0-9]{1,3}">
+        <p id="warning" style="color: red; display: none;"></p>
+      </div>
+      <div class="gapbutton">
+        <button id="calculateArea" class="btnSubmit">
+          COUNT
+        </button>
+        <button class="btnReset" onclick="resetArea()">
+          RESET
+        </button>
+      </div>
+      <div>
+        <h3 style="font-weight: bold;">
+          Results : <span id="resultArea"></span>
+        </h3>
+        <h4 id="results" class="results" style="display: none;" onclick="openModal()">click here to see how it's done</h4>
+      </div>
+    </section>
+
+    <!-- Perimeter Section -->
+    <section id="perimeter" class="content" style="display: none;">
+      <h2 style="margin-bottom: 50px;">
+        Perimeter of The Triangle
+      </h2>
+      <div>
+        <input type="number" id="sideA" placeholder="enter side 1 here" min="0" max="999" pattern="[0-9]{1,3}">
+        <p id="warning" style="color: red; display: none;"></p>
+      </div>
+      <div>
+        <input type="number" id="sideB" placeholder="enter side 2 here" min="0" max="999" pattern="[0-9]{1,3}">
+        <p id="warning" style="color: red; display: none;"></p>
+      </div>
+      <div>
+        <input type="number" id="sideC" placeholder="enter side 3 here" min="0" max="999" pattern="[0-9]{1,3}">
+        <p id="warning" style="color: red; display: none;"></p>
+      </div>
+      <div class="gapbutton">
+        <button id="calculatePerimeter" class="btnSubmit">
+          COUNT
+        </button>
+        <button class="btnReset" onclick="resetPerimeter()">
+          RESET
+        </button>
+      </div>
+      <div>
+        <h3 style="font-weight: bold;">
+          Results : <span id="resultPerimeter"></span>
+        </h3>
+        <h4 id="vresults" class="results" style="display: none;" onclick="openPModal()">click here to see how it's done</h4>
+      </div>
+    </section>
+
+    <!-- Modal Section -->
+    <div id="areaModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">X</span>
+        <p style="padding-bottom: 15px; padding-top: 25px; font-weight: bold;">Formula for Area of The Triangle</p>
+        <img src="./assets/triangle.png" alt="triangle formula" width="50%">
+        <div id="form" style="text-align: left;">
+          <p>b : base</p>
+          <p>h : height</p>
+          <p>area : ½ × base × height</p>
+          <hr style="text-align: center; width: 75%; margin-top: 30px; margin-bottom: 30px;">
+          <p>base : <span id="baseValue"></span></p>
+          <p>height : <span id="heightValue"></span></p>
+          <p>area : <span id="formula"></span></p>
+          <p>area : <span id="resultValue"></span></p>
+        </div>
+        <p id="formula"></p>
+      </div>
+    </div>
+
+    <div id="perimeterModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closePModal()">X</span>
+        <p style="padding-bottom: 15px; padding-top: 25px; font-weight: bold;">Formula for Perimeter of The Triangle</p>
+        <img src="./assets/triangle.png" alt="triangle formula" width="50%">
+        <div id="form" style="text-align: left;">
+          <p>A : side 1</p>
+          <p>B : side 2</p>
+          <p>C : side 3</p>
+          <p>perimeter : A + B + C</p>
+          <hr style="text-align: center; width: 75%; margin-top: 30px; margin-bottom: 30px;">
+          <p>side 1 : <span id="vsideA"></span></p>
+          <p>side 2 : <span id="vsideB"></span></p>
+          <p>side 3 : <span id="vsideC"></span></p>
+          <p>perimeter : <span id="vformula"></span></p>
+          <p>perimeter : <span id="pValue"></span></p>
+        </div>
+        <p id="formula"></p>
+      </div>
+    </div>
+    <script src="./js/script.js"></script>
+  </main>
+  <footer>
+    <div>&copy; created by rizki fadilah</div>
+    <a href="http://discordapp.com/users/697689528026136636" style="text-decoration: none; color: white;" title="click me!" target="_blank"
+    rel="noopener noreferrer">
+      <div>
+        <i class="fab fa-discord"></i> rizkifdh</div>
+    </a>
+  </footer>
 </body>
 </html>
